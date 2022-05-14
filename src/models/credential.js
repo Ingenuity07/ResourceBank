@@ -18,7 +18,7 @@ const credentialSchema = new mongoose.Schema({
         trim:true,
         minlength:18,
         validate(value){
-            if(value.toLowerCase().includes('password'))
+            if(value.toLowerCase().includes('pass'))
             throw new Error("password must not contain 'password' as a substring");
         }
     },
