@@ -34,15 +34,15 @@ const upload = multer(/*options object=>*/{
     // req=> contain request made
     // file=>has info about file 
     // cb=> its a call back to tell we are done
-    fileFilter(req, file, cb) {
+    fileFilter(req, file, callback) {
 
         // in regular expression \. is used to escape . then we list out the files we can accept then end it with $
 
         if (!file.originalname.match(/\.(pdf)$/)) //<= this is regular expression to filter the file type
-            return cb(new Error('Please upload pdf file'))
+            return callback(new Error('Please upload pdf file'))
 
 
-        return cb(null, true)
+        return callback(null, true)
     }
 });
 

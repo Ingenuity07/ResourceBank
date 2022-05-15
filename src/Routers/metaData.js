@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const multer = require('multer')
+const multer=require('multer')
 
 const MetaData = require('../models/metaData')
 
@@ -14,11 +14,10 @@ router.get('/fetch',async (req,res)=>{
     }
 })
 
+const create=multer();
 
-router.post('/create',o.none(),async (req,res)=>{
+router.post('/create',create.none(),async (req,res)=>{
     const body=req.body;
-
-    console.log(body)
 
     try{
         const data=new MetaData(body);
@@ -29,7 +28,6 @@ router.post('/create',o.none(),async (req,res)=>{
         res.status(500).send(err);
     }
 })
-
 
 router.delete('/remove/:id',async (req,res)=>{
     try{
