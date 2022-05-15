@@ -47,10 +47,10 @@ const upload = multer(/*options object=>*/{
 });
 
 router.post('/upload', upload.single('document'), async (req, res) => {
-
+    console.log(req.body)
     req.body.document = req.file.buffer
 
-    console.log(req.body)
+    
     const body = new Documents(req.body)
 
     await body.save();

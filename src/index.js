@@ -11,6 +11,8 @@ app.use('/credential',credential);
 app.use('/metaData',metaData);
 app.use('/document',document);
 
+app.use(express)
+
 
 app.listen(port,()=>{
     console.log("Server is up on port ",port);
