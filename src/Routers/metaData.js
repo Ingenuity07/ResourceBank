@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const multer=require('multer')
 
 const MetaData = require('../models/metaData')
 
@@ -12,8 +13,12 @@ router.get('/fetch',async (req,res)=>{
         res.status(500).send(err);
     }
 })
-router.post('/create',async (req,res)=>{
+
+const create=multer();
+
+router.post('/create',create.none(),async (req,res)=>{
     const body=req.body;
+
     try{
         const data=new MetaData(body);
         await data.save();
