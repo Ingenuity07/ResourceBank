@@ -16,7 +16,7 @@ const documentSchema = mongoose.Schema({
     },
     document:{
         type:Buffer,
-        required:true
+        required:true,
     }
 })
 
