@@ -8,8 +8,8 @@ router.get('/fetch',async (req,res)=>{
     try{
         const data= await MetaData.find();
         res.status(200).send(data);
-
-    }catch(err){
+    }
+    catch(err){
         res.status(500).send(err);
     }
 })
@@ -36,11 +36,10 @@ router.delete('/remove/:id',async (req,res)=>{
             res.status(404).send("No entry associated with this id");
         }
         res.status(200).send(done);
-    }catch(err){
+    }
+    catch(err){
         res.status(500).send(err);
     }
 })
-
-
 
 module.exports=router

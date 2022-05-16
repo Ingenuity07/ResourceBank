@@ -1,11 +1,13 @@
 const express = require('express')
 const app=express();
 require('./db/mongoose.js')
-const port = 3000||process.env.PORT;
+const port = 8000
 const credential = require('./Routers/credential')
 const metaData = require('./Routers/metaData')
 const document = require('./Routers/documents')
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json())
 app.use('/credential',credential);
 app.use('/metaData',metaData);

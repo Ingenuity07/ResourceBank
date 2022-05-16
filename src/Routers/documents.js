@@ -3,13 +3,34 @@ const router = express.Router();
 const multer = require('multer')
 const sharp = require('sharp')
 const Documents = require('../models/documents')
-
+const ObjectId = require('objectid')
 router.get('/download', async (req, res) => {
 
+    const data = req.query
     try {
-        const body = await Documents.find()
+        const body = await Documents.find(data)
+        console.log("i got here")
+        if (!body) {
+            throw new Error();
+        }
+        // here we are setting response header 
+        // set take two values key value paper
+        // content type sets the type of data we are sending
+        // res.set('Content-Type','application/pdf')
+        res.send(body)
+    }
+    catch (e) {
+        res.send(e)
+    }
+})
 
-        console.log(body[0].subject)
+router.get('/downloaddoc', async (req, res) => {
+
+    const id=req.query.id
+
+    try {
+        const body = await Documents.findById(id)
+        
         if (!body) {
             throw new Error();
         }
@@ -17,12 +38,14 @@ router.get('/download', async (req, res) => {
         // set take two values key value paper
         // content type sets the type of data we are sending
         res.set('Content-Type','application/pdf')
-        res.send(body[0].document)
+        res.send(body.document)
     }
     catch (e) {
         res.send(e)
     }
 })
+
+
 
 const upload = multer(/*options object=>*/{
 
@@ -64,6 +87,6 @@ router.post('/upload', upload.single('document'), async (req, res) => {
     res.status(400).send({ error: error.message })
 })
 
-
+// anish chadha
 
 module.exports=router
