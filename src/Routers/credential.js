@@ -121,6 +121,9 @@ router.get('/home',async(req,res)=>{
 // register
 router.post('/user/signup',async (req,res)=>{
 
+    console.log(req.body)
+
+
     // use static authenticate method of model in LocalStrategy
 passport.use(User.createStrategy());
 // use static serialize and deserialize of model for passport session support
@@ -135,7 +138,7 @@ passport.deserializeUser(User.deserializeUser());
 
    User.register({username: req.body.username},req.body.password,function(err,user)
     {
-     
+        
         if(!err)
         {   
             passport.authenticate("local")(req,res,function()
@@ -157,7 +160,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // login
 router.post('/user/signin',async(req,res)=>{
-    
+    //console.log(req.body)
     // use static authenticate method of model in LocalStrategy
 passport.use(User.createStrategy());
 // use static serialize and deserialize of model for passport session support
