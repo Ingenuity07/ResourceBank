@@ -161,6 +161,7 @@ passport.deserializeUser(User.deserializeUser());
 // login
 router.post('/user/signin',async(req,res)=>{
     //console.log(req.body)
+    console.log("signed in")
     // use static authenticate method of model in LocalStrategy
 passport.use(User.createStrategy());
 // use static serialize and deserialize of model for passport session support
@@ -193,7 +194,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // logout
 router.get('/user/logout',function(req,res){
-    //console.log("I m logout")
+    console.log("I m logout")
     req.logout();
     req.session.destroy();
     res.send("Logout");
