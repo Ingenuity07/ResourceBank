@@ -70,7 +70,7 @@ const upload = multer(/*options object=>*/{
 });
 
 router.post('/upload', upload.single('document'), async (req, res) => {
-    console.log(req.body)
+    console.log("jhdbj")
     req.body.document = req.file.buffer
 
     
@@ -79,8 +79,6 @@ router.post('/upload', upload.single('document'), async (req, res) => {
     await body.save();
     
     res.status(200).send("success");
-
-
 }, (error, req, res, next) => {
     // this would send customized HTML error 
     // it would send errors in middleware if any 
