@@ -1,8 +1,15 @@
 const express = require('express')
+
+
 const router = express.Router();
 const multer=require('multer')
 
 const MetaData = require('../models/metaData')
+
+const app=express();
+
+
+
 
 router.get('/fetch',async (req,res)=>{
     try{
