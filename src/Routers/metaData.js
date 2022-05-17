@@ -1,7 +1,14 @@
 const express = require('express')
+
+
 const router = express.Router();
 
 const MetaData = require('../models/metaData')
+
+const app=express();
+
+
+
 
 router.get('/fetch',async (req,res)=>{
     try{
@@ -12,8 +19,11 @@ router.get('/fetch',async (req,res)=>{
         res.status(500).send(err);
     }
 })
+
+
 router.post('/create',async (req,res)=>{
     const body=req.body;
+
     try{
         const data=new MetaData(body);
         await data.save();
